@@ -1,4 +1,4 @@
-# Laravel Junie
+# Junie Guidelines for Laravel and Symfony
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/dcblogdev/laravel-junie.svg?style=flat-square)](https://packagist.org/packages/dcblogdev/laravel-junie)
 [![Total Downloads](https://img.shields.io/packagist/dt/dcblogdev/laravel-junie.svg?style=flat-square)](https://packagist.org/packages/dcblogdev/laravel-junie)
@@ -6,13 +6,14 @@
 
 ## Introduction
 
-Laravel Junie is a package that allows you to easily install pre-configured guideline documents for Jetbrains Junie in your Laravel application. These guidelines can help your team maintain consistent coding standards and best practices.
+Junie is a package that allows you to easily install pre-configured guideline documents for Jetbrains Junie. It now ships with support for both Laravel and Symfony applications. These guidelines can help your team maintain consistent coding standards and best practices across projects.
 
 The package provides a simple command-line interface to install various guideline documents, such as general coding standards, API development guidelines, Livewire best practices, and more.
 
 ## Requirements
 
 - Laravel 12.0 or higher
+- Symfony 6.0 or higher
 
 ## Installation
 
@@ -22,15 +23,34 @@ You can install the package via composer:
 composer require dcblogdev/laravel-junie
 ```
 
+### Laravel
+
 The package will automatically register its service provider.
 
+### Symfony
+
+Register the bundle in `config/bundles.php`:
+
+```php
+return [
+    Dcblogdev\Junie\JunieBundle::class => ['all' => true],
+];
+```
+
 ## Configuration
+
+### Laravel
 
 To publish the configuration file, run:
 
 ```bash
 php artisan vendor:publish --tag=config
 ```
+
+### Symfony
+
+Copy the default configuration file to your `config/packages` directory if you need to customise it.
+
 
 This will create a `junie.php` configuration file in your `config` directory. You can customize the following options:
 
